@@ -8,6 +8,7 @@ from gmprocess.fft import compute_fft
 
 class FFT(Transform):
     """Class for computing the fast fourier transform."""
+
     def __init__(self, transform_data, damping=None, period=None, times=None):
         """
         Args:
@@ -34,7 +35,8 @@ class FFT(Transform):
         nfft = len(horizontals[0].data)
         sampling_rate = horizontals[0].stats.sampling_rate
         freqs = np.fft.rfftfreq(nfft, 1 / sampling_rate)
-        ft_traces = [freqs]
+        ft_traces = {}
+        ft_traces['freqs'] = freqs
 
         # Check if we already have computed the FFT for this trace
         for trace in horizontals:
@@ -45,6 +47,6 @@ class FFT(Transform):
                 spectra, freqs = compute_fft(trace, nfft)
                 trace.setCached('fas_spectrum', spectra)
 
-            ft_traces += [spectra]
+            ft_traces[trace.stats.channel] = [spectra]
 
         return ft_traces

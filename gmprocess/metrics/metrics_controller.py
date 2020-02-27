@@ -48,7 +48,8 @@ class MetricsController(object):
                 Intensity measurement types (string) to calculate.
             imcs (list):
                 Intensity measurement components (string) to
-                calculate. timeseries (StationStream): Stream of the
+                calculate. 
+            timeseries (StationStream): Stream of the
                 timeseries data.
             event (ScalarEvent):
                 Defines the focal time, geographic location, and magnitude of
@@ -492,12 +493,12 @@ class MetricsController(object):
                 dfdict['IMT'] += [imt_str]
                 dfdict['IMC'] += [r]
                 dfdict['Result'] += [result[r] * multiplier]
+                print(imt_str, r)
         else:
             # Deal with nan values for channels and radial transverse
             if imc == 'radial_transverse' and '' in result:
                 dfdict['IMT'] += [imt_str, imt_str]
                 dfdict['IMC'] += ['HNR', 'HNT']
-                dfdict['Result'] += [np.nan, np.nan]
             elif imc == 'channels' and '' in result:
                 dfdict['IMT'] += [imt_str, imt_str, imt_str]
                 dfdict['IMC'] += ['HN1', 'HN2', 'HNZ']

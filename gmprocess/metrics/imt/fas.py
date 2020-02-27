@@ -3,7 +3,8 @@ from gmprocess.metrics.gather import gather_pgms
 from gmprocess.metrics.imt.imt import IMT
 
 imts, imcs = gather_pgms()
-valid_imcs = ['geometric_mean', 'arithmetic_mean', 'quadratic_mean']
+valid_imcs = ['geometric_mean', 'arithmetic_mean',
+              'quadratic_mean', 'channels']
 
 
 class FAS(IMT):

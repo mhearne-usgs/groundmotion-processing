@@ -9,7 +9,7 @@ class Channels(IMC):
     # 1) it doesn't change with instances
     # 2) information can now be retrieved without
     #    instantiating first
-    _invalid_imts = ['FAS', 'ARIAS']
+    _invalid_imts = []
 
     def __init__(self, imc, imt, percentile=None, period=None):
         """
@@ -25,4 +25,5 @@ class Channels(IMC):
         self._steps = {
             'Rotation': 'null_rotation',
             'Combination2': 'null_combination',
+            'Combination1': 'null_combination'
         }
